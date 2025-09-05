@@ -1,0 +1,94 @@
+/* (선택) Elice DigitalBaeum OTF 파일이 있을 때만 사용.
+   폰트 파일을 /fonts 폴더에 넣고 파일명/경로가 맞는지 확인하세요. */
+   @font-face {
+    font-family: "Elice DigitalBaeum OTF";
+    src: url("./fonts/EliceDigitalBaeumOTF.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  /* 페이지 기본 스타일 */
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    background: #0b0b0b;           /* 텍스트가 #FFF라서 어두운 배경 추천 */
+    color: #fff;
+  }
+  
+  /* 섹션 레이아웃: 화면 가운데 정렬 + 가운데 정렬 텍스트 */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  /* 수직 중앙 */
+    align-items: center;      /* 수평 중앙 */
+    text-align: center;
+    padding: 40px 16px;       /* 좌우 여백(모바일 대비) */
+
+    /* Figma 배경 스타일 반영 */
+    background: url("images/harrypotter01.jpg") lightgray 50% / cover no-repeat;
+  }
+  
+  /* ====== Figma의 "큰 글자" 반영 ======
+     [layout]  width: 1226px; height: 231px; flex-shrink: 0;
+     [typography] color: #FFF; text-align: center;
+                   font-family: "Gothic A1"; font-size: 200px; font-weight: 900;
+                   line-height: normal;
+     웹에서는 width/height를 그대로 고정하기보다 'max-width'와 자동 높이를 권장! */
+  .hero-title {
+    color: #fff;
+    font-family: "Gothic A1", system-ui, -apple-system, "Segoe UI", "Noto Sans KR", sans-serif;
+    font-weight: 900;
+    /* 모바일 대응 + Figma 200px 상한을 유지하는 방식 */
+    font-size: clamp(48px, 16vw, 200px);
+    line-height: 1;                 /* Figma의 'normal' 근사값 */
+    max-width: 1226px;              /* Figma width를 max-width로 매핑 */
+    margin: 0 0 24px 0;             /* 아래 간격 */
+  }
+  
+  /* ====== Figma의 "작은 글자" 반영 ======
+     [layout]  width: 1020px; height: 104px; flex-shrink: 0;
+     [typography] color: #FFF; text-align: center;
+                   font-family: "Elice DigitalBaeum OTF";
+                   font-size: 24px; font-weight: 400; line-height: normal; */
+  .hero-subtitle {
+    color: #fff;
+    /* Elice가 없으면 Gothic A1 또는 기본 한글 폰트로 대체 표시 */
+    font-family: "Elice DigitalBaeum OTF", "Gothic A1", "Noto Sans KR", sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.4;               /* 가독성 위해 살짝 여유 */
+    max-width: 1020px;              /* Figma width를 max-width로 매핑 */
+    margin: 0 auto;                 /* 가운데 정렬 */
+    /* text-align은 부모(.hero)에서 center 처리됨 */
+  }
+  
+  /* 갤러리 섹션 스타일 */
+.gallery {
+    background: #fff;      /* 흰 배경 */
+    color: #000;           /* 검은 텍스트 */
+    padding: 60px 20px;
+    text-align: center;
+  }
+  
+  .gallery h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+  }
+  
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  .gallery-grid img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
